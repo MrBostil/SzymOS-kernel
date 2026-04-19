@@ -32,7 +32,7 @@ This project is aimed at building a **serious low-level system** with real funct
 
 * Bootable on real x86 hardware
 * Persistent filesystem (SzymFS)
-* Interactive shell with 25+ commands
+* Interactive shell with 16+ commands
 * CPU, memory, and disk detection
 * VGA text-mode interface (80x25)
 * Keyboard driver (QWERTY + shift support)
