@@ -178,7 +178,7 @@ This project is open to contributors who want to **build real low-level systems*
 ## 🛠️ Workflow
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/SzymOS-kernel.git
+git clone https://github.com/Szymdows/SzymOS-kernel.git
 cd SzymOS-kernel
 
 git checkout -b feature/your-change
