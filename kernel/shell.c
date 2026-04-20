@@ -7,7 +7,8 @@
 #include "../include/kernel.h"
 #include "filesystem.h"
 #include "ata.h"
-
+#include "serial.h"
+#include "io.h"
 #define MAX_COMMAND_LENGTH 256
 
 static char command_buffer[MAX_COMMAND_LENGTH];
@@ -61,7 +62,16 @@ void cmd_colors(void) {
     }
     terminal_writestring("\n");
 }
-
+void cmd_serial_print(const char* msg) {
+    serial_init();
+    serial_print(msg);
+}
+void cmd_serial_read() {
+    char buffer[128];
+    serial_init();
+    serial_read(buffer,128);
+    terminal_writestring(buffer);
+}
 void cmd_calc(const char* expr) {
     // Simple calculator: "calc 5 + 3"
     int num1 = 0, num2 = 0;
@@ -245,6 +255,12 @@ void shell_execute_command(const char* cmd) {
     else if (starts_with(cmd, "rm ")) {
         cmd_rm(cmd + 3);
     }
+    else if (starts_with(cmd, "serial_print ")) {
+        cmd_serial_print(cmd + 13);
+    }
+    else if (strcmp(cmd, "serial_read") == 0) {
+        cmd_serial_read();
+    } 
     else if (strcmp(cmd, "clear") == 0) {
         terminal_clear();
     }
